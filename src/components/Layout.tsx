@@ -1,22 +1,34 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
+const sidebarLinks = ["Home", "Tasks", "Habits", "Goals"];
 
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
       <aside className="w-64 bg-gray-800 text-white p-4">
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <nav>
-          <ul className="mt-4 space-y-2">
-            <li className="hover:bg-gray-700 p-2 rounded">Home</li>
-            <li className="hover:bg-gray-700 p-2 rounded">Tasks</li>
-            <li className="hover:bg-gray-700 p-2 rounded">Habits</li>
-            <li className="hover:bg-gray-700 p-2 rounded">Goals</li>
-          </ul>
+          <motion.ul
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            className="mt-4 space-y-2"
+          >
+            {sidebarLinks.map((link, index) => (
+            <Link to={`/${link == "Home" ? "": link}`}>
+              <motion.li
+                key={index}
+                whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+                className="p-2 rounded"
+              >
+                {link}
+              </motion.li>
+              </Link>
+            ))}
+          </motion.ul>
         </nav>
       </aside>
 
