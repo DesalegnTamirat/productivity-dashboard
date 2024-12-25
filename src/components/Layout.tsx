@@ -17,10 +17,10 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             transition={{ duration: 0.8 }}
             className="mt-4 space-y-2"
           >
-            {sidebarLinks.map((link, index) => (
+            {sidebarLinks.map((link) => (
             <Link to={`/${link == "Home" ? "": link}`}>
               <motion.li
-                key={index}
+                key={link}
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
                 className="p-2 rounded"
               >
@@ -33,7 +33,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       </aside>
 
       {/* Main Content */}
-      <main className="flex-1 bg-gray-100 p-6 overflow-y-auto">
+      <main className="flex-1 bg-gradient-to-b from-gray-100 to-gray-300 p-6 overflow-y-auto">
         {children}
       </main>
     </div>

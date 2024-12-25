@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'hover-bg': '#E5E7EB',
+      }
+    },
   },
   plugins: [],
 }
